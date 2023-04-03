@@ -74,7 +74,9 @@ const ContextProvider = ({children})=>{
         window.location.reload();
     }
 
-   
+    const showVideoToOtherUser=()=>{
+        socket.emit('showVideoToOtherUser',(otherUser))
+    }
 
     return (
         <SocketContext.Provider
