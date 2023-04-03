@@ -54,9 +54,6 @@ const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
                 </div>
                 <img src={meetingImg} alt="meeting-img" className="meeting-img" />
             </Midi>
-            
-
-          
         </Main>
     );
 };
