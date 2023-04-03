@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDarkMode } from './hooks';
 import { ThemeProvider } from 'styled-components';
 import lightTheme, { darkTheme } from './theming/themeContext';
@@ -6,8 +6,12 @@ import GlobalStyles from './theming/global';
 import { AppWrapper, Landing} from './pages';
 import {  Routes, Route } from 'react-router-dom';
 import JoinRoom from './pages/JoinRoom';
+import { ContextProvider } from './SocketContext';
 
 function App() {
+  useEffect(() => {
+    if (!navigator.onLine) alert('Connect to internet!');
+  }, [navigator]);
   const [
     mode,
     toggleMode,
@@ -18,10 +22,16 @@ function App() {
 if (!componentMounted) {
     return <div />;
 }
+ 
 
 
   return (
-    <ThemeProvider theme={mode === 'dark' ?darkTheme: lightTheme  }>
+  
+  
+        //SocketContect provider for the components
+    <ContextProvider>
+
+<ThemeProvider theme={mode === 'dark' ? darkTheme: lightTheme  }>
         <GlobalStyles />
           <Routes>
         
@@ -56,6 +66,10 @@ if (!componentMounted) {
           </Routes>
           
     </ThemeProvider>
+    </ContextProvider>
+ 
+ 
+ 
   )
 }
 

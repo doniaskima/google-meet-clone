@@ -18,6 +18,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "sass": "^1.60.0",
+    "simple-peer": "^9.11.1",
     "socket.io-client": "^4.6.1",
     "styled-components": "^5.3.9"
   },

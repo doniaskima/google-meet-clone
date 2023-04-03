@@ -1,13 +1,15 @@
 import { useEffect , createContext , useState } from "react";
-import Peer from "simple-peer";
+ 
 import {io} from "socket.io-client";
 import {message} from "antd";
 import { BACKEND_URL } from "./constants";
+import { useNavigate } from "react-router-dom";
 const SocketContext = createContext();
 
 const socket= io(BACKEND_URL);
 
 const ContextProvider = ({children})=>{
+    const navigate=useNavigate();
     const [socketState, setSocketState] = useState(socket);
     const [me, setMe] = useState('');
     const [call, setCall] = useState({});
@@ -62,5 +64,30 @@ const ContextProvider = ({children})=>{
 
         })
 
-    },[])
-}
+    },[]);
+
+    //function for leaving the chat room 
+    const leaveChatRoom=()=>{
+        socket.emit("chatRoomEnded",otherUser);
+        navigate('/');
+        message.success('Meet Ended');
+        window.location.reload();
+    }
+
+   
+
+    return (
+        <SocketContext.Provider
+          value={{
+            me,
+            call,
+            callEnded,
+     
+          }}
+        >
+          {children}
+        </SocketContext.Provider>
+      );
+};
+
+export {ContextProvider ,SocketContext}
