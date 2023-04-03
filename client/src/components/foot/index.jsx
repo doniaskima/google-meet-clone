@@ -1,7 +1,7 @@
 import React from 'react';
 import { FootCont, FootFinal, LogoSvg, FinalLeft, FinalRight } from './styles';
 import { Full, Paragraph } from '../../theming/styles';
-import { Link } from 'react-router-dom';
+
 
 const Foot = () => {
     return (
