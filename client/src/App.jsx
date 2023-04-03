@@ -5,6 +5,7 @@ import lightTheme, { darkTheme } from './theming/themeContext';
 import GlobalStyles from './theming/global';
 import { AppWrapper, Landing} from './pages';
 import {  Routes, Route } from 'react-router-dom';
+import JoinRoom from './pages/JoinRoom';
 
 function App() {
   const [
@@ -20,7 +21,7 @@ if (!componentMounted) {
 
 
   return (
-    <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={mode === 'dark' ?darkTheme: lightTheme  }>
         <GlobalStyles />
           <Routes>
         
@@ -38,7 +39,22 @@ if (!componentMounted) {
                             </AppWrapper>
                         }
                     />
+                     <Route
+                        exact
+                        path='/joinRoom'
+                        element={
+                            <AppWrapper>
+                                <JoinRoom
+                                    setDisableScroll={setDisableScroll}
+                                    spread={spread}
+                                    mode={mode}
+                                    toggleMode={toggleMode}
+                                />
+                            </AppWrapper>
+                        }
+                    />
           </Routes>
+          
     </ThemeProvider>
   )
 }

@@ -11,9 +11,10 @@ import { Nav, Foot } from '../components';
 import { Spread } from '../components/switch/styles';
 import { Awk1} from '../images';
 import { useNavigate } from 'react-router-dom';
+import meetingImg from "../assets/meetingimg.png"
 
 
-const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
+const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
     const navigate= useNavigate();
     const spreadClass =
         spread === 'first'
@@ -33,37 +34,31 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
             <Spread className={spreadClass} />
             <Nav mode={mode} toggleMode={toggleMode} />
             <Midi style={{ mixBlendMode: 'difference' }}>
-                <Heading
+            <Heading
                     style={{
                         mixBlendMode: 'difference',
                         color: 'white',
                     }}
                 >
-                    <span style={{ fontWeight: 300 }}>Welcome</span>{' '}
-                    <br />
-                    <span style={{ fontStyle: 'italic' }}>   Video Meeting app</span>  
-                    <br />
-                    <span style={{ fontWeight: 300 }}>Wanna Join ?</span>{' '}
-                </Heading>
-             
-            <div style={{ mixBlendMode: 'difference' }} className="create-room">
-                 <button 
-                 onClick={()=>navigate("/joinRoom")}
-                 className="btn-create-room">
-                    Create Room
-                 </button>
-                <span className="span-label" >Or</span>
-                <input type="text"  className="label-input" placeholder='Enter code room to join '/>
-             </div>
+                    Chat before and after meetings
+            </Heading>
+                <div className="join-rrom">
+                    <label htmlFor="join-rrom" className="room-label">Enter your Name</label>
+                    <input type="text" className='label-input' placeholder='Enter Your Name'/>
+                    <button className='btn-join-room'>
+                        Enter Room
+                    </button>
+                    <button className='btn-join-room'>
+                       Go Back
+                    </button>
+                </div>
+                <img src={meetingImg} alt="meeting-img" className="meeting-img" />
             </Midi>
             
 
-            <Full>
-                <Image style={{ backgroundImage: `url(${Awk1})` }} />
-            </Full>
-            <Foot />
+          
         </Main>
     );
 };
 
-export { Landing };
+export default JoinRoom ;

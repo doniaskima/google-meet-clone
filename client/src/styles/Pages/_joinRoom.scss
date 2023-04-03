@@ -1,0 +1,33 @@
+.meeting-img{
+    width:500px;
+    height: 500px;
+    object-fit: contain;
+}
+
+.join-rrom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:40px;
+    .btn-join-room{
+        padding:12px;
+        border-radius: 8px;
+        background-color:violet;
+        border: 1px solid green;
+        color:white;
+        font-size:19px;
+        margin-left:12px;
+    }
+}
+.room-label{
+    font-size:22px;
+    color:violet;
+}
+.label-input{
+    padding:12px 12px;
+    margin-left: 8px;
+    font-size:18px;
+    border-radius: 12px;
+    border: 1px solid green;
+    color:violet;
+}
