@@ -1,5 +1,5 @@
 import { useEffect , createContext , useState } from "react";
- 
+// import Peer from 'simple-peer';
 import {io} from "socket.io-client";
 import {message} from "antd";
 import { BACKEND_URL } from "./constants";
@@ -18,6 +18,7 @@ const ContextProvider = ({children})=>{
     const [myMicStatus, setMyMicStatus] = useState(false);
     const [userMicStatus, setUserMicStatus] = useState(false);
     const [callEnded, setCallEnded] = useState(false);
+    const [callAccepted,setCallAccepted] = useState(false);
 
     useEffect(()=>{
         if(!navigator.online) alert('Connect to internet!');
@@ -61,7 +62,7 @@ const ContextProvider = ({children})=>{
             setShowOtherUserVideo(false);
             message.info('User disconnected from call');
             setCallEnded(true);
-
+            const peer = new Peer({ initiator: false, trickle: false, stream });
         })
 
     },[]);
@@ -74,8 +75,17 @@ const ContextProvider = ({children})=>{
         window.location.reload();
     }
 
+
+      //function to let the other person know whether you want to show your video
     const showVideoToOtherUser=()=>{
         socket.emit('showVideoToOtherUser',(otherUser))
+    }
+
+    //function to answer the call 
+    const answerCall = ()=>{
+        setCallAccepted(true);
+        setOtherUserName(call.from);
+        //....
     }
 
     return (
@@ -84,6 +94,7 @@ const ContextProvider = ({children})=>{
             me,
             call,
             callEnded,
+            answerCall,
      
           }}
         >

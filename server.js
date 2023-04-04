@@ -29,9 +29,11 @@ io.on('connection', (socket) => {
   socket.on('updateMyMedia', (data) => {
     io.to(data.userToUpdate).emit('updateUserMedia', data.data);
   });
+
   socket.on("connect_error", (err) => {
     console.log(`connect_error due to ${err.message}`);
   });
+  
   socket.on('showVideoToOtherUser',(otherUser)=>{
     io.to(otherUser).emit('showVideoToOtherUser')
   })
@@ -54,7 +56,8 @@ io.on('connection', (socket) => {
 
   socket.on('send-message', (data) => {
     io.to(data.userToSend).emit('recieve-message', data.data);
-  });
+  }); 
+
   socket.on('send-message-chatbox', (data) => {
     io.to(data.userToSend).emit('recieve-message-chatbox', data.data);
   });
@@ -62,6 +65,7 @@ io.on('connection', (socket) => {
   socket.on('callended', (userToUpdate) => {
     io.to(userToUpdate).emit('callended');
   });
+
   socket.on('chatRoomEnded', (userToUpdate) => {
     io.to(userToUpdate).emit('chatRoomEnded');
   });
