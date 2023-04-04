@@ -19,6 +19,8 @@ const ContextProvider = ({children})=>{
     const [userMicStatus, setUserMicStatus] = useState(false);
     const [callEnded, setCallEnded] = useState(false);
     const [callAccepted,setCallAccepted] = useState(false);
+    const [meetingCode, setMeetingCode] = useState('');
+    const [newMeet, setNewMeet] = useState(false);
 
     useEffect(()=>{
         if(!navigator.online) alert('Connect to internet!');
@@ -95,7 +97,9 @@ const ContextProvider = ({children})=>{
             call,
             callEnded,
             answerCall,
-     
+            meetingCode,
+            setMeetingCode,
+            setNewMeet,
           }}
         >
           {children}

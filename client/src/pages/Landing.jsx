@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import QUERIES, {
     Main,
     Midi,
@@ -11,10 +11,15 @@ import { Nav, Foot } from '../components';
 import { Spread } from '../components/switch/styles';
 import { Awk1} from '../images';
 import { useNavigate } from 'react-router-dom';
+import { SocketContext } from '../SocketContext';
 
 
-const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
+const Landing = ({ toggleMode, mode, spread, setDisableScroll , props }) => {
     const navigate= useNavigate();
+   
+      
+    const { meetingCode, setMeetingCode, setNewMeet } = useContext(SocketContext);
+    
     const spreadClass =
         spread === 'first'
             ? 'growBlack'
@@ -48,13 +53,37 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
              
             <div style={{ mixBlendMode: 'difference' }} className="create-room">
                  <button 
-                 onClick={()=>navigate("/joinRoom")}
+                 onClick={() => {
+                    setNewMeet(true);
+                    navigate('/joinRoom');
+                  }}
                  className="btn-create-room">
                     Create Room
                  </button>
                 <span className="span-label" >Or</span>
-                <input type="text"  className="label-input" placeholder='Enter code room to join '/>
+                <input 
+                type="text"  
+                className="label-input" 
+                value={meetingCode || ''}
+                onChange={(e)=>{
+                    setMeetingCode(e.target.value);
+                 }}
+                placeholder='Enter code room to join '/>
              </div>
+             {
+                meetingCode.length > 0 && 
+                <button 
+                onClick={() => {
+                    if (!meetingCode || meetingCode.trim().length === 0) {
+                        message.error('Please enter the meeting code');
+                        return;
+                      }
+                      navigate('/joinRoom');
+                 }}
+                className="btn-create-room">
+                   Join Room
+                </button>
+             }
             </Midi>
             
 
