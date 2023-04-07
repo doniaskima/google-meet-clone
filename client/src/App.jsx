@@ -7,6 +7,9 @@ import { AppWrapper, Landing} from './pages';
 import {  Routes, Route } from 'react-router-dom';
 import JoinRoom from './pages/JoinRoom';
 import { ContextProvider } from './SocketContext';
+import ChatRoom from './pages/ChatRoom';
+import Join from './pages/Join';
+import Meet from './pages/Meet';
 
 function App() {
   useEffect(() => {
@@ -63,6 +66,37 @@ if (!componentMounted) {
                             </AppWrapper>
                         }
                     />
+                     <Route
+                        exact
+                        path='/chatRoom'
+                        element={
+                            <AppWrapper>
+                                <ChatRoom
+                                />
+                            </AppWrapper>
+                        }
+                    />
+                    <Route
+                        exact
+                        path='/join'
+                        element={
+                            <AppWrapper>
+                                <Join
+                                />
+                            </AppWrapper>
+                        }
+                    />
+                                  <Route
+                        exact
+                        path='/meet'
+                        element={
+                            <AppWrapper>
+                                <Meet
+                                />
+                            </AppWrapper>
+                        }
+                    />
+                    
           </Routes>
           
     </ThemeProvider>
