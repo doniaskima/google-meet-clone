@@ -1,3 +1,4 @@
+import "./init"
 import React, { useEffect } from 'react';
 import { useDarkMode } from './hooks';
 import { ThemeProvider } from 'styled-components';
