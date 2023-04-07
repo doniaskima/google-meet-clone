@@ -33,9 +33,10 @@ const ContextProvider = ({children})=>{
     const [notesOpen, setNotesOpen] = useState(false);
     const [quill, setQuill] = useState(null);
     const [otherUserStream, setOtherUserStream] = useState(null);
-    const myVideo = useRef();
-    const userVideo = useRef();
-    const connectionRef = useRef();
+    const navigate = useNavigate();
+    const myVideo = useRef(); // to get a reference to a DOM element
+    const userVideo = useRef(); // to get a reference to a DOM element
+    const connectionRef = useRef(); // to get a reference to a DOM element
 
     useEffect(() => {
         socket.on('me', (id) => {
@@ -81,9 +82,9 @@ const ContextProvider = ({children})=>{
         });
       }, []);
       //function for leaving the chat room
-      const leaveChatRoom = (history) =>{
+      const leaveChatRoom = () =>{
         socket.emit('chatRoomEnded', otherUser);
-        history.push('/');
+        navigate('/');
         message.success('Meet Ended');
         window.location.reload();
       }
@@ -152,7 +153,7 @@ const ContextProvider = ({children})=>{
         connectionRef.current = peer;
       };
       //function to end the video call
-      const endCall = (history) => {
+      const endCall = () => {
         socket.emit('callended', otherUser);
         setCallEnded(true);
         if (connectionRef.current) connectionRef.current.destroy();
