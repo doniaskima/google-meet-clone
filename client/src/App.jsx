@@ -71,23 +71,21 @@ if (!componentMounted) {
                         exact
                         path='/chatRoom'
                         element={
-                            <AppWrapper>
+                            
                                 <ChatRoom
                                 />
-                            </AppWrapper>
+                            
                         }
                     />
                     <Route
                         exact
                         path='/join'
                         element={
-                            <AppWrapper>
                                 <Join
                                 />
-                            </AppWrapper>
                         }
                     />
-                                  <Route
+                    <Route
                         exact
                         path='/meet'
                         element={

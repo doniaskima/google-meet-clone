@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import QUERIES, {
     Main,
     Midi,
@@ -12,10 +12,22 @@ import { Spread } from '../components/switch/styles';
 import { Awk1} from '../images';
 import { useNavigate } from 'react-router-dom';
 import meetingImg from "../assets/meetingimg.png"
+import { SocketContext } from '../SocketContext';
 
 
 const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
     const navigate= useNavigate();
+    const {
+        callAccepted,
+        name,
+        setName,
+        stream,
+        setStream,
+        callUser,
+        meetingCode,
+        setMeetingCode,
+        newMeet,
+      } = useContext(SocketContext);
     const spreadClass =
         spread === 'first'
             ? 'growBlack'
@@ -44,12 +56,53 @@ const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
             </Heading>
                 <div className="join-rrom">
                     <label htmlFor="join-rrom" className="room-label">Enter your Name</label>
-                    <input type="text" className='label-input' placeholder='Enter Your Name'/>
-                    <button className='btn-join-room'>
-                        Enter Room
-                    </button>
+                    <input
+                      type="text"
+                      className='label-input' 
+                      placeholder='Enter Your Name' 
+                      value={name}
+                      onChange={(e)=>{
+                        setName(e.target.value)
+                      }}    
+                    />
+                    {
+                        newMeet ? (
+                        <button 
+                           className='btn-join-room'
+                            onClick={()=>{
+                                if(name.trim().length===0){
+                                    message.error("Enter your Name");
+                                    return ;
+                                }
+                                navigate('/chatroom')
+                            }}   
+                        >
+                            Enter Room
+                        </button>
+                        ):(
+                        <button 
+                            className='btn-join-room'
+                             onClick={()=>{
+                                 if(name.length===0){
+                                    message.error('Please enter your name');
+                                     return ;
+                                 }
+                                //call the user with this id
+                                 callUser(meetingCode);
+                             }}   
+                         >
+                             Join Room
+                         </button>
+                        )
+                    }
+                   
                     <button 
-                    onClick={()=>navigate(-1)}
+                    onClick={()=>{
+                        navigate(-1);
+                        window.location.reload;
+                        setMeetingCode('');
+                    }}
+                   
                     className='btn-join-room'>
                        Go Back
                     </button>
