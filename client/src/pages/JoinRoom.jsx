@@ -48,7 +48,9 @@ const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
                     <button className='btn-join-room'>
                         Enter Room
                     </button>
-                    <button className='btn-join-room'>
+                    <button 
+                    onClick={()=>navigate(-1)}
+                    className='btn-join-room'>
                        Go Back
                     </button>
                 </div>

@@ -180,7 +180,7 @@ const ContextProvider = ({children})=>{
         stream.getAudioTracks()[0].enabled = !myMicStatus;
         setMyMicStatus(!myMicStatus);
       };
-    
+ 
       return (
         <SocketContext.Provider
           value={{

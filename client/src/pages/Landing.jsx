@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import QUERIES, {
     Main,
     Midi,
@@ -12,13 +12,26 @@ import { Spread } from '../components/switch/styles';
 import { Awk1} from '../images';
 import { useNavigate } from 'react-router-dom';
 import { SocketContext } from '../SocketContext';
+import {message } from "antd";
 
 
 const Landing = ({ toggleMode, mode, spread, setDisableScroll , props }) => {
     const navigate= useNavigate();
-   
-      
+
+     //used to get the meeting code for the person who joins the meet
+     const paramsCode = props?.location?.search || '';
+
+
     const { meetingCode, setMeetingCode, setNewMeet } = useContext(SocketContext);
+
+    useEffect(() => {
+        if (paramsCode.length) {
+          if (paramsCode.substring(0, 5) == '?ref=') return;
+          setMeetingCode(paramsCode.substring(1));
+        }
+        setNewMeet(null);
+      }, []);
+    
     
     const spreadClass =
         spread === 'first'
@@ -69,8 +82,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll , props }) => {
                     setMeetingCode(e.target.value);
                  }}
                 placeholder='Enter code room to join '/>
-             </div>
-             {
+            {
                 meetingCode.length > 0 && 
                 <button 
                 onClick={() => {
@@ -80,10 +92,12 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll , props }) => {
                       }
                       navigate('/joinRoom');
                  }}
-                className="btn-create-room">
+                className="btn-create-room  ">
                    Join Room
                 </button>
              }
+             </div>
+ 
             </Midi>
             
 
