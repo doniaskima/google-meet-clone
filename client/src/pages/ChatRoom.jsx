@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Fragment, useCallback, useEffect, useState ,useRef, useContext } from 'react';
 import ThemeChanger from '../components/theme-changer';
 import { Button, message, notification } from "antd";

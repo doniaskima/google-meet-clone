@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { message } from 'antd';
 import QUERIES, {
     Main,
     Midi,
@@ -34,6 +35,26 @@ const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
             : spread === 'second'
             ? 'growWhite'
             : '';
+            useEffect(() => {
+                if (!newMeet && meetingCode.length === 0) {
+                    navigate('/');
+                  window.location.reload();
+                  return;
+                }
+                if (stream) return;
+                navigator.mediaDevices
+                  .getUserMedia({ video: true, audio: true })
+                  .then((res) => {
+                    res.getAudioTracks()[0].enabled = false;
+                    setStream(res);
+                  });
+              }, []);
+            
+              useEffect(() => {
+                if (callAccepted) navigate('/chatRoom');
+              }, [callAccepted]);
+          
+            
 
     return (
         <Main
@@ -87,8 +108,8 @@ const JoinRoom = ({ toggleMode, mode, spread, setDisableScroll }) => {
                                     message.error('Please enter your name');
                                      return ;
                                  }
-                                //call the user with this id
-                                 callUser(meetingCode);
+                               //call the user with this id
+                              callUser(meetingCode);
                              }}   
                          >
                              Join Room
