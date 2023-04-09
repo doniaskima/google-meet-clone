@@ -1,4 +1,5 @@
 import "./init"
+import config from '../gitprofile.config';
 import React, { useEffect } from 'react';
 import { useDarkMode } from './hooks';
 import { ThemeProvider } from 'styled-components';
@@ -72,7 +73,7 @@ if (!componentMounted) {
                         path='/chatRoom'
                         element={
                            
-                                <ChatRoom
+                                <ChatRoom   config={config}
                                 />
                           
                         }

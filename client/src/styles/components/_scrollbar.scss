@@ -4,10 +4,7 @@
 }
 
 /* Track */
-::-webkit-scrollbar-track {
-  @apply bg-dark-tint;
-}
-
+ 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   @apply bg-primary cursor-pointer;

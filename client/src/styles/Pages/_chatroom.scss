@@ -6,7 +6,7 @@
     .chatroom-container-upper {
         display: flex;
         flex-direction: column;
-        height: 90vh;
+        height: 100vh;
         .chatroom-header {
             padding: 0 20px;
             background-color: transparent;
@@ -15,7 +15,6 @@
             justify-content: space-between;
             align-items: center;
             height: 10%;
-
             .chatroom-header-title {
                 color: #00BFD8;
                 font-size: 25px;
@@ -83,15 +82,15 @@
 }
 
 .chatroom-container-input {
-    height: 10vh;
     display: flex;
     width: 100vw;
+   
 }
 
 .chatroom-input-master {
     margin: 10px;
     display: flex;
-    width: 100%;
+    width: 90%;
     background-color: #d2d2d29c;
     align-items: center;
     justify-content: center;
@@ -104,7 +103,7 @@
     border: none;
     margin: 0;
     background-color: #ffffff00;
-    border:none;
+    
 }
 
 .chatroom-msg-input:focus{
@@ -327,4 +326,76 @@
 .message {
     display: flex;
 }
+
+.send-message-component {
+    padding: 10px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .send-message-icon {
+      color: rgb(130, 134, 137);
+      margin-left: 8px;
+      margin-right: 8px;
+      width: 28px;
+      height: 28px;
+      padding: 3px;
+      border-radius: 50%;
+    }
+    .send-message-icon-highligh {
+      color: teal;
+    }
+  }
+  
+  .chat__input-wrapper {
+    padding: 10px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .chat-input-icon {
+    color: rgb(130, 134, 137);
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 28px;
+    height: 28px;
+    padding: 3px;
+    border-radius: 50%;
+  }
+  
+  .chat-input-icon--highlight {
+    color: red;
+  }
+  
+  .chat__attach {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 50px;
+  }
+  
+  .chat__attach-btn {
+    margin-bottom: 10px;
+  }
+  
+  .chat-input-icon--pressed {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .chat-input {
+    background:transparent;
+    color: rgb(241, 241, 242);
+    padding: 10px 10px;
+    border-radius: 22px;
+    flex: 1;
+    height: 100%;
+    width: 800px;
+  }
+  
+  .chat__input::placeholder {
+    color: rgb(153, 153, 153);
+    font-size: 0.9rem;
+  }
  
