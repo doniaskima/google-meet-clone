@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Fragment, useCallback, useEffect, useState ,useRef, useContext } from 'react';
 import ThemeChanger from '../components/theme-changer';
 import { Button, message, notification } from "antd";
@@ -12,6 +13,7 @@ import { APP_URL } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { SocketContext } from "../SocketContext";
 import Message from "../components/Message/Message"
+import EmpMsgSvg from "../assets/videoCall.png"
 
  
 import {
@@ -250,12 +252,8 @@ const handleKeypress = (e) => {
                     ) : (
                         <div>
                             <div className='chatroom-message-desc font-sans'>
-                                {newMeet ? (<p className="font-sans">It is quite empty here..maybe invite someone?</p>) : (<p className="font-sans">It is quite empty here...start chatting or join the call!</p>)}
-
-                            </div>
-                            <div className='chatroom-message-desc'>
-                                {/* <EmpMsgSvg /> */}
-                            </div>
+                              
+                            </div>                      
                         </div>
 
                     )}
