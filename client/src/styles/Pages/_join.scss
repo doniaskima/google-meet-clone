@@ -1,21 +1,18 @@
-.flexbox-join-page{
+.flexbox-join-page {
     display: flex;
     justify-content: space-evenly;
-    padding-top:50px;
+    padding-top: 50px;
     background-color: white;
-
-    .flexbox-join-enter-button{
+    .flexbox-join-enter-button {
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
-
-        h1{
+        h1 {
             font-size: 1rem;
         }
-
-        .video-div video{
-            width:100%;
+        .video-div video {
+            width: 100%;
             border-radius: 25px;
             max-width: 60vw;
             box-shadow: 0 0 5px 5px #00BFD8, /* inner white */
@@ -27,7 +24,7 @@
 
 .flexbox-join-enter {
     display: flex;
-    background-color: #E1E1E1;
+    background-color: #fff;
     border-radius: 50px;
     padding-left: 30px;
 }
