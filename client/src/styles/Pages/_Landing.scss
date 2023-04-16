@@ -1,0 +1,33 @@
+.create-room{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+    .room-label{
+        font-size:22px;
+        color:violet;
+    }
+    .label-input{
+        padding:12px 12px;
+        margin-left: 8px;
+        font-size:18px;
+        border-radius: 12px;
+        border: 1px solid green;
+        color:violet;
+    }
+    .span-label{
+        font-size:22px;
+        color:violet;
+        margin-right: 5px;
+        margin-left: 8px;
+    }
+    .btn-create-room{
+        padding:12px;
+        border-radius: 8px;
+        background-color:violet;
+        border: 1px solid green;
+        color:white;
+        margin-left:12px;
+        font-size:19px;
+    }
+}
