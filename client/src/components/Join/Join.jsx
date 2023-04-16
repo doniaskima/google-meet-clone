@@ -10,8 +10,11 @@ import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import VideocamOffIcon from '@material-ui/icons/VideocamOff';
+import { useNavigate } from 'react-router-dom';
 
 const Join = (props) => {
+
+  const navigate=useNavigate();
   const {
     socketState: socket,
     name,
@@ -35,7 +38,7 @@ const Join = (props) => {
 
   useEffect(() => {
     if (!newMeet && meetingCode.length === 0) {
-      props.history.push('/');
+      navigate('/');
       window.location.reload();
       return;
     }
@@ -128,7 +131,7 @@ const Join = (props) => {
                       }
                       if(otherUser) showVideoToOtherUser();
                       console.log(otherUser);
-                      props.history.push('meet');
+                      navigate('meet');
                     }}
                   >
                     Start
@@ -144,7 +147,7 @@ const Join = (props) => {
                       }
                       if(otherUser) showVideoToOtherUser();
                       callUser(meetingCode);
-                      props.history.push('meet');
+                      navigate('meet');
                     }}
                   >
                     Join
@@ -153,7 +156,7 @@ const Join = (props) => {
                 <button
                   className='chatroom-meeting-btn'
                   onClick={() => {
-                    props.history.push('chatRoom');
+                    navigate('chatRoom');
                   }}
                 >
                   Leave
